@@ -5,16 +5,16 @@ import Header from './components/Header'
 import StartScreen from './screens/StartGameScreen'
 import GameScreen from './screens/GameScreen'
 import GameOverScreen from './screens/GameOverScreen'
-//import AppLoading from 'expo-app-loading'
-//import Font from 'expo-font'
+import AppLoading from 'expo-app-loading';
+import * as Font from 'expo-font'
 
 
-// fetchFonts = () => {
-//   return Font.loadAsync({
-//     'open-sans' : require('./assets/fonts/OpenSans-Regular.ttf'),
-//     'open-sans-bold' : require('./assets/fonts/OpenSans-Bold.ttf')
-//   })
-// }
+const fetchFonts = () => {
+  return Font.loadAsync({
+    'open-sans' : require('./assets/fonts/OpenSans-Regular.ttf'),
+    'open-sans-bold' : require('./assets/fonts/OpenSans-Bold.ttf')
+  })
+}
 
 export default function App() {
 
@@ -22,15 +22,15 @@ export default function App() {
   const [guessRound,setGuessRound] = useState(0)
   const [dataLoaded,setDataLoaded] = useState(false)
 
-  // if(!dataLoaded){
-  //   return (
-  //   <AppLoading 
-  //   startAsync={fetchFonts} 
-  //   onFinish={()=>setDataLoaded(true)}
-  //   onError={(error) => console.log(error)}
-  //   />
-  //   )
-  // }
+  if(!dataLoaded){
+    return (
+    <AppLoading 
+    startAsync={fetchFonts} 
+    onFinish={()=>setDataLoaded(true)} 
+    onError={(err) => console.log(err)}
+    />
+    )
+  }
 
   const resetGameHandler = () =>{
     setGuessRound(0)
@@ -47,6 +47,7 @@ export default function App() {
   }
 
   let content = <StartScreen onStartGame={startGameHandler}/>
+
 
   if(userNumber && guessRound <=0){
     content=<GameScreen userChoice={userNumber} onGameOver={gameOverHandler}/>
