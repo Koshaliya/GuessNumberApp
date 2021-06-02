@@ -7,7 +7,7 @@ const GameOverScreen = props => {
         <View style={styles.screen}>
             <Text >The Game is Over!!!</Text>
             <Text>The number of rounds: {props.roundNumber}</Text>
-            <Text>The number entered and guessed was: {props.guessNumber}</Text>
+            <Text>The number entered and guessed was same as: {props.guessNumber}</Text>
             <Button title='NEW GAME' onPress={props.resetFunc}></Button>
         </View>
     )
