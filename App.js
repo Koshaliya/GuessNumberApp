@@ -58,7 +58,7 @@ export default function App() {
 
   return (
     <View style={styles.screen}>
-      <Header title='Guess a number'/>
+      <Header title='Magic Guess App'/>
       {content}
     </View>
   );
